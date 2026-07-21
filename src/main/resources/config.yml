@@ -1,0 +1,23 @@
+# ========================================== #
+#            Virtha-Tracker Config           #
+# ========================================== #
+
+format:
+  # What to show when the target (player or coordinate) is in a different world?
+  different_world: "N/A"
+  
+  # What to show if the tracked player is offline?
+  player_offline: "Offline"
+  
+  # The format of the distance output. %distance% will be replaced by the calculated number.
+  distance_text: "%distance%m"
+  
+  # Whether to round the distance to the nearest whole number (true) or leave decimal points (false)
+  round_distance: true
+
+optimization:
+  # Cache time in milliseconds.
+  # PlaceholderAPI can request distances up to 20 times a second per player (e.g. Scoreboards).
+  # Caching prevents heavy math calculations on every single tick.
+  # 500ms means the distance is recalculated at most 2 times per second for the same placeholder.
+  cache_time_ms: 500

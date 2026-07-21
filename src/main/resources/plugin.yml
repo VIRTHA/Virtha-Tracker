@@ -1,0 +1,13 @@
+name: VirthaTracker
+version: '${project.version}'
+main: com.virtha.tracker.VirthaTrackerPlugin
+api-version: 1.13
+authors: [Virtha]
+description: A plugin to provide PlaceholderAPI distance trackers
+depend: [PlaceholderAPI]
+
+commands:
+  virtha:
+    description: Main command for Virtha Tracker
+    aliases: [virthatracker, tracker]
+    permission: virthatracker.admin
