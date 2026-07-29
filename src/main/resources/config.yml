@@ -21,3 +21,15 @@ optimization:
   # Caching prevents heavy math calculations on every single tick.
   # 500ms means the distance is recalculated at most 2 times per second for the same placeholder.
   cache_time_ms: 500
+
+arrows:
+  # Arrow symbols representing the target direction relative to the player's horizontal view (yaw)
+  front: "↑"
+  front_right: "↗"
+  right: "→"
+  back_right: "↘"
+  back: "↓"
+  back_left: "↙"
+  left: "←"
+  front_left: "↖"
+

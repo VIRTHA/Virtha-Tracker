@@ -52,7 +52,12 @@ public class TrackerExpansion extends PlaceholderExpansion {
         // distance_xyz_<x>_<y>_<z>
         // distance_xz_<x>_<z>
         // distance_player_<name>
-        if (!params.startsWith("distance_")) {
+        // arrow_xyz_<x>_<y>_<z>
+        // arrow_xz_<x>_<z>
+        // arrow_player_<name>
+        boolean isDistance = params.startsWith("distance_");
+        boolean isArrow = params.startsWith("arrow_");
+        if (!isDistance && !isArrow) {
             return null;
         }
         
@@ -63,7 +68,13 @@ public class TrackerExpansion extends PlaceholderExpansion {
             return cached;
         }
 
-        String result = calculateDistance(player, params.substring(9)); // strip "distance_"
+        String result;
+        if (isDistance) {
+            result = calculateDistance(player, params.substring(9)); // strip "distance_"
+        } else {
+            result = calculateArrow(player, params.substring(6)); // strip "arrow_"
+        }
+
         if (result != null) {
             distanceCache.put(cacheKey, result);
         }
@@ -111,6 +122,48 @@ public class TrackerExpansion extends PlaceholderExpansion {
 
         double distance = player.getLocation().distance(targetLoc);
         return formatDistance(distance);
+    }
+
+    private String calculateArrow(Player player, String targetStr) {
+        Location targetLoc = null;
+
+        try {
+            if (targetStr.startsWith("xyz_")) {
+                String[] parts = targetStr.substring(4).split("_");
+                if (parts.length == 3) {
+                    double x = Double.parseDouble(parts[0]);
+                    double y = Double.parseDouble(parts[1]);
+                    double z = Double.parseDouble(parts[2]);
+                    targetLoc = new Location(player.getWorld(), x, y, z);
+                }
+            } else if (targetStr.startsWith("xz_")) {
+                String[] parts = targetStr.substring(3).split("_");
+                if (parts.length == 2) {
+                    double x = Double.parseDouble(parts[0]);
+                    double z = Double.parseDouble(parts[1]);
+                    targetLoc = new Location(player.getWorld(), x, player.getLocation().getY(), z);
+                }
+            } else if (targetStr.startsWith("player_")) {
+                String targetName = targetStr.substring(7);
+                Player targetPlayer = Bukkit.getPlayerExact(targetName);
+                if (targetPlayer == null || !targetPlayer.isOnline()) {
+                    return configManager.getPlayerOfflineMsg();
+                }
+                targetLoc = targetPlayer.getLocation();
+            }
+        } catch (NumberFormatException e) {
+            return null; // Invalid placeholder format
+        }
+
+        if (targetLoc == null) {
+            return null;
+        }
+
+        if (!player.getWorld().equals(targetLoc.getWorld())) {
+            return configManager.getDifferentWorldMsg();
+        }
+
+        return DirectionCalculator.calculateArrow(player.getLocation(), targetLoc, configManager);
     }
 
     private String formatDistance(double distance) {

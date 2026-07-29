@@ -5,9 +5,10 @@
 ## 🚀 Features
 
 * **3D & 2D Distance Tracking**: Calculate the distance to a specific coordinate or another player.
-* **Aggressive Caching**: To prevent server TPS drops when updating rapidly (e.g., in a scoreboard updating 20 times a second), all distance calculations are cached in memory for a configurable amount of time.
+* **Relative Directional Radar Arrows**: Display 2D directional arrows (`↑`, `↗`, `→`, `↘`, `↓`, `↙`, `←`, `↖`) pointing toward a coordinate or player relative to where the viewer is currently looking.
+* **Aggressive Caching**: To prevent server TPS drops when updating rapidly (e.g., in a scoreboard updating 20 times a second), all distance and arrow calculations are cached in memory for a configurable amount of time.
 * **Cross-Dimensional Support**: Displays a customizable string if the target is in a different dimension.
-* **Highly Configurable**: Change every message and tweak performance parameters directly in `config.yml`.
+* **Highly Configurable**: Change every message, arrow symbol, and tweak performance parameters directly in `config.yml`.
 
 ## 📦 Dependencies
 
@@ -31,15 +32,20 @@ Use these placeholders anywhere PlaceholderAPI is supported (holograms, scoreboa
 | `%virtha_distance_xyz_<x>_<y>_<z>%` | Returns the **3D distance** between the player and the specific X, Y, Z coordinate. |
 | `%virtha_distance_xz_<x>_<z>%` | Returns the **2D distance** between the player and the specific X, Z coordinate (ignoring height/Y). |
 | `%virtha_distance_player_<name>%` | Returns the distance between the player and another online player. |
+| `%virtha_arrow_xyz_<x>_<y>_<z>%` | Returns a **relative 2D directional arrow** pointing toward the target X, Y, Z coordinate based on player view (yaw). |
+| `%virtha_arrow_xz_<x>_<z>%` | Returns a **relative 2D directional arrow** pointing toward the target X, Z coordinate based on player view (yaw). |
+| `%virtha_arrow_player_<name>%` | Returns a **relative 2D directional arrow** pointing toward another online player based on player view (yaw). |
 
 *Examples:*
 * `%virtha_distance_xyz_100_64_200%` 
 * `%virtha_distance_xz_100_200%`
 * `%virtha_distance_player_Notch%`
+* `%virtha_arrow_xyz_100_64_200%`
+* `%virtha_arrow_player_Notch%`
 
 ## ⚙️ Configuration (`config.yml`)
 
-The configuration file allows you to customize the output formats and optimize performance:
+The configuration file allows you to customize the output formats, directional symbols, and optimize performance:
 
 ```yaml
 format:
@@ -57,9 +63,20 @@ format:
 
 optimization:
   # Cache time in milliseconds.
-  # 500ms means the distance is recalculated at most 2 times per second for the same placeholder.
+  # 500ms means the distance/arrow is recalculated at most 2 times per second for the same placeholder.
   # Increase this number if you experience TPS drops with hundreds of players.
   cache_time_ms: 500
+
+arrows:
+  # Arrow symbols representing the target direction relative to the player's horizontal view (yaw)
+  front: "↑"
+  front_right: "↗"
+  right: "→"
+  back_right: "↘"
+  back: "↓"
+  back_left: "↙"
+  left: "←"
+  front_left: "↖"
 ```
 
 ## 💻 Commands & Permissions
