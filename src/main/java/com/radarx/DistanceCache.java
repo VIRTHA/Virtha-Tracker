@@ -1,4 +1,4 @@
-package com.virtha.tracker;
+package com.radarx;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -42,7 +42,6 @@ public class DistanceCache {
     }
 
     private void startCleanupTask() {
-        // Run every 20 seconds (400 ticks) to clean up old entries and prevent memory leaks
         cleanupTask = Bukkit.getScheduler().runTaskTimerAsynchronously(plugin, () -> {
             long now = System.currentTimeMillis();
             long maxAge = configManager.getCacheTimeMs();

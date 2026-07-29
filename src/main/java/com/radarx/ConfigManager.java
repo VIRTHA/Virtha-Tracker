@@ -1,4 +1,4 @@
-package com.virtha.tracker;
+package com.radarx;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;

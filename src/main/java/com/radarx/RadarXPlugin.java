@@ -1,8 +1,8 @@
-package com.virtha.tracker;
+package com.radarx;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class VirthaTrackerPlugin extends JavaPlugin {
+public class RadarXPlugin extends JavaPlugin {
 
     private ConfigManager configManager;
     private DistanceCache distanceCache;
@@ -12,13 +12,15 @@ public class VirthaTrackerPlugin extends JavaPlugin {
         configManager = new ConfigManager(this);
         distanceCache = new DistanceCache(this, configManager);
         
-        getCommand("virtha").setExecutor(new VirthaCommand(configManager));
+        if (getCommand("radarx") != null) {
+            getCommand("radarx").setExecutor(new RadarXCommand(configManager));
+        }
         
         if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new TrackerExpansion(this, configManager, distanceCache).register();
         }
         
-        getLogger().info("VirthaTracker has been enabled!");
+        getLogger().info("RadarX has been enabled!");
     }
 
     @Override
@@ -26,6 +28,6 @@ public class VirthaTrackerPlugin extends JavaPlugin {
         if (distanceCache != null) {
             distanceCache.stopCleanupTask();
         }
-        getLogger().info("VirthaTracker has been disabled!");
+        getLogger().info("RadarX has been disabled!");
     }
 }

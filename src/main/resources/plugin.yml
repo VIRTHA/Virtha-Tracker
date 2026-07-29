@@ -1,13 +1,13 @@
-name: VirthaTracker
+name: RadarX
 version: '${project.version}'
-main: com.virtha.tracker.VirthaTrackerPlugin
+main: com.radarx.RadarXPlugin
 api-version: 1.13
-authors: [Virtha]
-description: A plugin to provide PlaceholderAPI distance trackers
+authors: [RadarX]
+description: High-performance PlaceholderAPI distance & directional radar indicators
 depend: [PlaceholderAPI]
 
 commands:
-  virtha:
-    description: Main command for Virtha Tracker
-    aliases: [virthatracker, tracker]
-    permission: virthatracker.admin
+  radarx:
+    description: Main command for RadarX
+    aliases: [radar, radarx]
+    permission: radarx.admin

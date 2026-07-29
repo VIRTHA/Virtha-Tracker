@@ -9,15 +9,15 @@ This capability provides PlaceholderAPI integration to calculate distances betwe
 The system SHALL provide PlaceholderAPI placeholders that calculate the distance from the player viewing the placeholder to a specific target.
 
 #### Scenario: 3D Coordinate tracking
-- **WHEN** a player requests the placeholder `%virtha_distance_xyz_100_60_200%`
+- **WHEN** a player requests the placeholder `%radarx_distance_xyz_100_60_200%`
 - **THEN** the system returns the 3D distance between the player and coordinates X:100 Y:60 Z:200, formatted according to `config.yml`.
 
 #### Scenario: 2D Coordinate tracking
-- **WHEN** a player requests the placeholder `%virtha_distance_xz_100_200%`
+- **WHEN** a player requests the placeholder `%radarx_distance_xz_100_200%`
 - **THEN** the system returns the 2D distance between the player and coordinates X:100 Z:200 (ignoring Y), formatted according to `config.yml`.
 
 #### Scenario: Player tracking
-- **WHEN** a player requests the placeholder `%virtha_distance_player_Notch%`
+- **WHEN** a player requests the placeholder `%radarx_distance_player_Notch%`
 - **THEN** the system returns the distance between the player and the online player named "Notch".
 
 ### Requirement: Cross-world handling
@@ -38,5 +38,5 @@ The system SHALL cache placeholder results to avoid running distance calculation
 The system SHALL read localization and settings from `config.yml`.
 
 #### Scenario: Reloading configuration
-- **WHEN** an admin runs `/virtha reload`
+- **WHEN** an admin runs `/radarx reload`
 - **THEN** the system reloads `config.yml` into memory and updates placeholder formats.

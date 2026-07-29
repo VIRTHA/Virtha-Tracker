@@ -1,6 +1,6 @@
-# Virtha-Tracker
+# RadarX
 
-**Virtha-Tracker** is a highly-optimized, lightweight Minecraft plugin (Spigot/Paper) that provides custom [PlaceholderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI) placeholders for calculating distances between players and specific targets. It's built for minigames, Factions, and Survival servers to allow server administrators to track objectives easily through scoreboards or action bars.
+**RadarX** is a highly-optimized, lightweight Minecraft plugin (Spigot/Paper) that provides custom [PlaceholderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI) placeholders for calculating distances and relative directional radar arrows between players and specific targets. It's built for minigames, Factions, and Survival servers to allow server administrators to track objectives easily through scoreboards, action bars, or holograms.
 
 ## 🚀 Features
 
@@ -17,11 +17,11 @@
 
 ## 🔧 Installation
 
-1. Drop `VirthaTracker.jar` into your server's `/plugins/` folder.
+1. Drop `RadarX-1.0-SNAPSHOT.jar` (or `RadarX.jar`) into your server's `/plugins/` folder.
 2. Ensure you have `PlaceholderAPI` installed.
 3. Restart your server.
-4. Modify `plugins/VirthaTracker/config.yml` to your liking.
-5. Use `/virtha reload` to apply configuration changes.
+4. Modify `plugins/RadarX/config.yml` to your liking.
+5. Use `/radarx reload` to apply configuration changes.
 
 ## 📝 Placeholders
 
@@ -29,19 +29,19 @@ Use these placeholders anywhere PlaceholderAPI is supported (holograms, scoreboa
 
 | Placeholder | Description |
 |---|---|
-| `%virtha_distance_xyz_<x>_<y>_<z>%` | Returns the **3D distance** between the player and the specific X, Y, Z coordinate. |
-| `%virtha_distance_xz_<x>_<z>%` | Returns the **2D distance** between the player and the specific X, Z coordinate (ignoring height/Y). |
-| `%virtha_distance_player_<name>%` | Returns the distance between the player and another online player. |
-| `%virtha_arrow_xyz_<x>_<y>_<z>%` | Returns a **relative 2D directional arrow** pointing toward the target X, Y, Z coordinate based on player view (yaw). |
-| `%virtha_arrow_xz_<x>_<z>%` | Returns a **relative 2D directional arrow** pointing toward the target X, Z coordinate based on player view (yaw). |
-| `%virtha_arrow_player_<name>%` | Returns a **relative 2D directional arrow** pointing toward another online player based on player view (yaw). |
+| `%radarx_distance_xyz_<x>_<y>_<z>%` | Returns the **3D distance** between the player and the specific X, Y, Z coordinate. |
+| `%radarx_distance_xz_<x>_<z>%` | Returns the **2D distance** between the player and the specific X, Z coordinate (ignoring height/Y). |
+| `%radarx_distance_player_<name>%` | Returns the distance between the player and another online player. |
+| `%radarx_arrow_xyz_<x>_<y>_<z>%` | Returns a **relative 2D directional arrow** pointing toward the target X, Y, Z coordinate based on player view (yaw). |
+| `%radarx_arrow_xz_<x>_<z>%` | Returns a **relative 2D directional arrow** pointing toward the target X, Z coordinate based on player view (yaw). |
+| `%radarx_arrow_player_<name>%` | Returns a **relative 2D directional arrow** pointing toward another online player based on player view (yaw). |
 
 *Examples:*
-* `%virtha_distance_xyz_100_64_200%` 
-* `%virtha_distance_xz_100_200%`
-* `%virtha_distance_player_Notch%`
-* `%virtha_arrow_xyz_100_64_200%`
-* `%virtha_arrow_player_Notch%`
+* `%radarx_distance_xyz_100_64_200%` 
+* `%radarx_distance_xz_100_200%`
+* `%radarx_distance_player_Notch%`
+* `%radarx_arrow_xyz_100_64_200%`
+* `%radarx_arrow_player_Notch%`
 
 ## ⚙️ Configuration (`config.yml`)
 
@@ -81,5 +81,5 @@ arrows:
 
 ## 💻 Commands & Permissions
 
-* `/virtha reload` - Reloads `config.yml` directly from disk.
-  * **Permission**: `virthatracker.admin`
+* `/radarx reload` (or `/radar reload`) - Reloads `config.yml` directly from disk.
+  * **Permission**: `radarx.admin`

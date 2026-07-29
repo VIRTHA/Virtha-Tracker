@@ -1,4 +1,4 @@
-package com.virtha.tracker;
+package com.radarx;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.Bukkit;
@@ -10,11 +10,11 @@ import org.jetbrains.annotations.Nullable;
 
 public class TrackerExpansion extends PlaceholderExpansion {
 
-    private final VirthaTrackerPlugin plugin;
+    private final RadarXPlugin plugin;
     private final ConfigManager configManager;
     private final DistanceCache distanceCache;
 
-    public TrackerExpansion(VirthaTrackerPlugin plugin, ConfigManager configManager, DistanceCache distanceCache) {
+    public TrackerExpansion(RadarXPlugin plugin, ConfigManager configManager, DistanceCache distanceCache) {
         this.plugin = plugin;
         this.configManager = configManager;
         this.distanceCache = distanceCache;
@@ -22,12 +22,12 @@ public class TrackerExpansion extends PlaceholderExpansion {
 
     @Override
     public @NotNull String getIdentifier() {
-        return "virtha";
+        return "radarx";
     }
 
     @Override
     public @NotNull String getAuthor() {
-        return plugin.getDescription().getAuthors().get(0);
+        return plugin.getDescription().getAuthors().isEmpty() ? "RadarX" : plugin.getDescription().getAuthors().get(0);
     }
 
     @Override

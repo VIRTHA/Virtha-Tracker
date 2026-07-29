@@ -33,6 +33,6 @@ The system SHALL return appropriate fallback strings when distance or direction 
 - **THEN** the system SHALL return the configured `format.different_world` string (`"N/A"` by default)
 
 #### Scenario: Target player is offline
-- **WHEN** a player requests `%virtha_arrow_player_<name>%` for an offline or non-existent player
+- **WHEN** a player requests `%radarx_arrow_player_<name>%` for an offline or non-existent player
 - **THEN** the system SHALL return the configured `format.player_offline` string (`"Offline"` by default)
 
